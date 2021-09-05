@@ -1,3 +1,4 @@
+- better find word in telescope
 - add an align function
 - try disabling statusline for focused window only
 - think of custom elements to add to bufferline (git diff/change/delete?)
@@ -12,16 +13,8 @@
 - better sorting of completion
 - selection color blue
 - figure out what's going on with signatures, and add them to the mini buffer
-- set projects management
 - add new telescope bindings
-- try to make the autocompletion pop-up look better, maybe some color?
-- create a repository for the whole thing
 - improve colon commands prompt/completion (ideally with something like ivy, maybe Telescope ?)
-- implement grep search in file with telescope ? (like swiper in emacs)
 - telescope scroll preview with mouse, use to work, why did it stop?
-- rethink ways to work with terminals
-- better window switching ?
-- get rid of mode display in the minibuffer
 - comment with slash in cpp
-- fix dashboard weird characters
 - docsets in telescope? (doesn't seem to be a thing, might want to think about doing it)

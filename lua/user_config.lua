@@ -15,7 +15,7 @@ M.ui = {
         enabled = false,
         fav_themes = {
             "onedark",
-            "gruvchad",
+            "onenord",
         },
     },
 
@@ -40,6 +40,7 @@ M.ui.plugin = {
 -- non plugin normal, available without any plugins
 M.options = {
     clipboard         = "unnamedplus",
+    showmode          = false, -- don't show mode in status line (let feline display that)
     cmdheight         = 1,
     copy_cut          = true, -- copy cut text ( x key ), visual and normal mode
     copy_del          = true, -- copy deleted text ( dd key ), visual and normal mode
@@ -194,7 +195,6 @@ M.mappings.plugin = {
 
     toggleterm = {
         toggle = "<C-t>",
-
     },
 
     truezen = { -- distraction free modes mapping, hide statusline, tabline, line numbers
