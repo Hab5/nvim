@@ -8,7 +8,10 @@ local options = require("core.utils").load_config().options
 
 opt.clipboard = options.clipboard
 opt.cmdheight = options.cmdheight
-opt.cul = true -- cursor line
+opt.cursorline = false
+
+-- Number of item displayed in the completion menu
+opt.pumheight = options.pumheight
 
 -- Indentline
 opt.expandtab = options.expandtab
@@ -17,7 +20,7 @@ opt.smartindent = options.smartindent
 
 -- disable tilde on end of buffer: https://github.com/  neovim/neovim/pull/8546#issuecomment-643643758
 opt.fillchars = { eob = " " }
-
+opt.title = options.title
 opt.hidden = options.hidden
 opt.ignorecase = options.ignorecase
 opt.mouse = options.mouse

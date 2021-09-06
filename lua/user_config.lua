@@ -28,17 +28,19 @@ M.ui = {
 M.ui.plugin = {
     -- statusline related options
     statusline = {
+        hide_inative = true, -- hide statusline on inactive buffers
         -- these are filetypes, not pattern matched
         -- if a filetype is present in shown, it will always show the statusline, irrespective of filetypes in hidden
         hidden = {},
-        shown = {},
-        -- default, round , slant , block , arrow
+        shown  = {},
+        -- round , slant , block , arrow
         style = "round",
     },
 }
 
 -- non plugin normal, available without any plugins
 M.options = {
+    mapleader         = " ",
     clipboard         = "unnamedplus",
     showmode          = false, -- don't show mode in status line (let feline display that)
     cmdheight         = 1,
@@ -48,7 +50,6 @@ M.options = {
     hidden            = true,
     ignorecase        = true,
     insert_nav        = true, -- navigation in insertmode
-    mapleader         = " ",
     mouse             = "a",
     number            = true,
     numberwidth       = 2,
@@ -60,6 +61,8 @@ M.options = {
     relativenumber    = true,
     ruler             = false,
     updatetime        = 250,
+    pumheight         = 10,
+    title             = false, -- Window title = active buffer
 }
 
 -- these are plugin related options

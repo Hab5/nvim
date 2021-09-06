@@ -25,6 +25,7 @@ local icon_styles = {
     },
 }
 
+local hide_inactive = require("core.utils").load_config().ui.plugin.statusline.hide_inactive
 local user_statusline_style = require("core.utils").load_config().ui.plugin.statusline.style
 local statusline_style = icon_styles[user_statusline_style]
 
@@ -337,6 +338,13 @@ components.right.active[9] = {
     }
 
 }
+
+-- same bar for inactive windows
+if (hide_inactive) ~= false then
+    components.left.inactive = components.left.active
+    components.mid.inactive = components.mid.active
+    components.right.inactive = components.right.active
+end
 
 require("feline").setup {
     default_bg = colors.statusline_bg,

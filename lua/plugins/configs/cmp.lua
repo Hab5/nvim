@@ -16,21 +16,22 @@ cmp.setup {
 
     formatting = {
         format = function(entry, vim_item)
+            -- limit size to 40 character
+            vim_item.abbr = string.sub(vim_item.abbr, 1, 40)
             -- load lspkind icons
             vim_item.kind = string.format(
-            "%s %s",
+            "%s (%s)",
             require("plugins.configs.lspkind_icons").icons[vim_item.kind],
             vim_item.kind
             )
-
             -- vim_item.menu = ({
                 --    nvim_lsp = "[LSP]",
                 --    nvim_lua = "[Lua]",
                 --    buffer   = "[BUF]",
                 -- })[entry.source.name]
 
-                return vim_item
-            end,
+            return vim_item
+        end,
         },
 
         mapping = {

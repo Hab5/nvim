@@ -1,3 +1,5 @@
+- better swap files
+- diagnostic curly underline
 - better find word in telescope
 - add an align function
 - try disabling statusline for focused window only
@@ -6,8 +8,10 @@
 - add border to signature popup thingy
 - better git signs color
 - set floating window with curved border
+- change paragraph to language specific block ? (maybe treesitter can do that)
 - add keybinding toggleterm / make the toggle binding modifiable from user_config
 - add toggleterms with commands (gdb/lazygit/ranger etc) (and create a picker in telescope) +bindings
+- figure out why the nvimtree autocmd won't work with setlocal
 - switch ctrl/shift + right/left in normal/visual mode
 - see if possible to select with shift + (ctrl/home/end/home/end)
 - better sorting of completion

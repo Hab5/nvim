@@ -8,6 +8,9 @@ local g = vim.g
 
 vim.o.termguicolors = true
 
+-- FIXME
+-- vim.cmd [[ autocmd Filetype NvimTree setlocal cursorline | echo "NvimTree autcmd"]]
+
 g.nvim_tree_add_trailing = 0 -- append a trailing slash to folder names
 g.nvim_tree_allow_resize = 1
 g.nvim_tree_auto_close = 0 -- closes tree when it's the last window
@@ -23,7 +26,7 @@ g.nvim_tree_hijack_netrw = 0
 g.nvim_tree_indent_markers = 1
 g.nvim_tree_ignore = { ".git", "node_modules", ".cache" }
 g.nvim_tree_quit_on_open = 0 -- closes tree when file's opened
-g.nvim_tree_root_folder_modifier = ":t"
+g.nvim_tree_root_folder_modifier = table.concat {":t:gs?$?/", string.rep(" ", 1000), "?:gs?^? ?" }
 g.nvim_tree_side = "left"
 g.nvim_tree_tab_open = 0
 g.nvim_tree_update_cwd = 1
@@ -46,15 +49,15 @@ g.nvim_tree_icons = {
       renamed = "➜",
       staged = "",
       unmerged = "",
-      unstaged = "✗",
+      unstaged = "",
       untracked = "★",
    },
    folder = {
-      -- disable indent_markers option to get arrows working or if you want both arrows and indent then just add the arrow icons in front            ofthe default and opened folders below!
+      -- not used with folder_arrow =1
       arrow_open = "",
       arrow_closed = "",
       default = "",
-      empty = "", -- 
+      empty = "",
       empty_open = "",
       open = "",
       symlink = "",
