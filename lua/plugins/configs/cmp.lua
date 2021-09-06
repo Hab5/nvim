@@ -4,7 +4,7 @@ if not present then
     return
 end
 
-vim.opt.completeopt = "menuone,noselect"
+vim.opt.completeopt = "menuone,preview"
 
 -- nvim-cmp setup
 cmp.setup {

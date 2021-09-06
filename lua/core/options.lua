@@ -32,6 +32,7 @@ opt.ruler = options.ruler
 opt.shortmess:append "sI"
 
 opt.signcolumn = "yes"
+opt.inccommand = "nosplit"
 opt.splitbelow = true
 opt.splitright = true
 opt.tabstop = options.tabstop
@@ -47,7 +48,6 @@ opt.updatetime = options.updatetime
 opt.whichwrap:append "<>hl"
 
 g.mapleader = options.mapleader
-
 -- disable some builtin vim plugins
 local disabled_built_ins = {
    "2html_plugin",

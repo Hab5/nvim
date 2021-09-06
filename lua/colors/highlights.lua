@@ -12,14 +12,16 @@ local grey          = colors.grey
 local grey_fg       = colors.grey_fg
 local line          = colors.line
 local nord_blue     = colors.nord_blue
-local one_bg        = colors.one_bg
 local one_bg2       = colors.one_bg2
+local one_bg3       = colors.one_bg3
 local pmenu_bg      = colors.pmenu_bg
 local purple        = colors.purple
 local red           = colors.red
 local white         = colors.white
 local yellow        = colors.yellow
 local orange        = colors.orange
+local vibrant_green = colors.vibrant_green
+local dark_purple   = colors.dark_purple
 
 local ui = require("core.utils").load_config().ui
 
@@ -58,7 +60,7 @@ cmd "hi clear CursorLine"
 -- Line number
 fg("cursorlinenr", white)
 
--- same it bg, so it doesn't appear
+-- same as bg, so it doesn't appear
 fg("EndOfBuffer", black)
 
 -- For floating windows
@@ -79,7 +81,9 @@ fg("NvimInternalError", red)
 -- inactive statuslines as thin splitlines
 fg("StatusLineNC", one_bg2 .. " gui=underline")
 fg("VertSplit",    one_bg2)
--- bg("Visual", nord_blue)
+
+-- selection color
+bg("Visual", one_bg3)
 
 if ui.transparency then
    bg("Normal", "NONE")
@@ -97,8 +101,8 @@ fg("DashboardHeader",   grey_fg)
 fg("DashboardShortcut", grey_fg)
 
 -- Git signs
-fg_bg("DiffAdd",       nord_blue, "none")
-fg_bg("DiffChange",    grey_fg,   "none")
+fg_bg("DiffAdd",       vibrant_green, "none")
+fg_bg("DiffChange",    orange,   "none")
 fg_bg("DiffModified",  nord_blue, "none")
 fg_bg("DiffDelete",    red,       black)
 
@@ -130,11 +134,11 @@ fg("NvimTreeEmptyFolderName",  blue)
 fg("NvimTreeEndOfBuffer",      darker_black)
 fg("NvimTreeFolderIcon",       folder_bg)
 fg("NvimTreeFolderName",       folder_bg)
-fg("NvimTreeGitDirty",         red)
+fg("NvimTreeGitDirty",         dark_purple)
 fg("NvimTreeIndentMarker",     one_bg2)
 bg("NvimTreeNormal",           darker_black)
 fg("NvimTreeOpenedFolderName", blue)
-fg("NvimTreeRootFolder",       red .. " gui=bold")
+fg("NvimTreeRootFolder",       green .. " gui=bold, gui=standout")
 fg_bg("NvimTreeStatuslineNc",  darker_black, darker_black)
 fg("NvimTreeVertSplit",        darker_black)
 bg("NvimTreeVertSplit",        darker_black)
