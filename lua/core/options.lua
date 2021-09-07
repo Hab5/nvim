@@ -6,9 +6,10 @@ g.user_config = "user_config"
 
 local options = require("core.utils").load_config().options
 
-opt.clipboard = options.clipboard
-opt.cmdheight = options.cmdheight
-opt.cursorline = false
+opt.clipboard  = options.clipboard
+opt.cmdheight  = options.cmdheight
+opt.cursorline = options.cursorline
+opt.wrap       = options.wrap
 
 -- Number of item displayed in the completion menu
 opt.pumheight = options.pumheight

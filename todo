@@ -1,4 +1,5 @@
-- better swap files
+- code action automatic if only one choice
+- man & cppman open in floating window, with K
 - diagnostic curly underline
 - better find word in telescope
 - add an align function

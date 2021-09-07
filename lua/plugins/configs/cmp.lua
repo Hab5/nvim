@@ -4,7 +4,7 @@ if not present then
     return
 end
 
-vim.opt.completeopt = "menuone,preview"
+vim.opt.completeopt = "menu,menuone,preview"
 
 -- nvim-cmp setup
 cmp.setup {
@@ -30,8 +30,8 @@ cmp.setup {
                 --    buffer   = "[BUF]",
                 -- })[entry.source.name]
 
-            return vim_item
-        end,
+                return vim_item
+            end,
         },
 
         mapping = {
@@ -64,6 +64,21 @@ cmp.setup {
                 end
             end,
         },
+
+        documentation = {
+            border = {
+                {"╭", "FloatBorder"},
+                {"─", "FloatBorder"},
+                {"╮", "FloatBorder"},
+                {"│", "FloatBorder"},
+                {"╯", "FloatBorder"},
+                {"─", "FloatBorder"},
+                {"╰", "FloatBorder"},
+                {"│", "FloatBorder"}
+            },
+        },
+
+
         sources = {
             { name = "nvim_lsp" },
             { name = "luasnip" },

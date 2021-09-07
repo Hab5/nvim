@@ -117,29 +117,51 @@ local function lspSymbol(name, icon)
         text = icon, numhl = "LspDiagnosticsDefaul" .. name })
 end
 
-lspSymbol("Error",       "")
+lspSymbol("Error",       " ")
 lspSymbol("Warning",     "𥉉")
-lspSymbol("Information", "")
-lspSymbol("Hint",        "")
+lspSymbol("Information", " ")
+lspSymbol("Hint",        " ")
+
+local popup_border = {
+    {"╭", "FloatBorder"},
+    {"─", "FloatBorder"},
+    {"╮", "FloatBorder"},
+    {"│", "FloatBorder"},
+    {"╯", "FloatBorder"},
+    {"─", "FloatBorder"},
+    {"╰", "FloatBorder"},
+    {"│", "FloatBorder"},
+}
+
+-- Show diagnostics in popup window (using the border above)
+vim.api.nvim_command(
+    "autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({border="
+    ..vim.inspect(popup_border)..
+    ", focusable=false, show_header=false})"
+)
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = {
-        prefix = "",
-        spacing = 0,
-    },
+    virtual_text = false, -- if using pop-up window
+    -- virtual_text =  { -- for text displayed in buffer
+    --     prefix = "»",
+    --     spacing = 0,
+    -- },
     signs = false,
     underline = true,
     update_in_insert = false, -- update diagnostics insert mode
     severity_sort = true,
 })
+
+
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
 vim.lsp.handlers.hover, {
-    border = "single",
+    border = popup_border,
 })
+
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
 vim.lsp.handlers.signature_help, {
-    border = "single",
+    border = popup_border,
 })
 
 -- suppress error messages from lang servers

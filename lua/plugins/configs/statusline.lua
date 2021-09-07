@@ -52,15 +52,7 @@ local mode_colors = {
     ["!"]  = { "SHELL",     colors.green },
 }
 
--- Initialize the components table
-local components = {
-    left = { active = {}, inactive = {} },
-    mid = { active = {}, inactive = {} },
-    right = { active = {}, inactive = {} },
-}
-
--- neovim mode
-components.left.active[1] = {
+local vim_mode = {
     left_sep = {
         str = " " .. statusline_style.left,
         hi = {
@@ -86,10 +78,10 @@ components.left.active[1] = {
             fg = section_color,
         },
     },
-
 }
 
-components.left.active[2] = {
+
+local file = {
     left_sep = {
         str = " " .. statusline_style.left,
         hi = {
@@ -119,7 +111,7 @@ components.left.active[2] = {
     right_sep = { str = "│ ", hl = { fg = colors.statusline_bg, bg = section_color } },
 }
 
-components.left.active[3] = {
+local directory = {
     provider = function()
         local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
         return " " .. dir_name
@@ -139,7 +131,7 @@ components.left.active[3] = {
     },
 }
 
-components.left.active[4] = {
+local git_left_sep = {
     provider = function()
         local git = vim.b.gitsigns_status_dict
         if git then
@@ -154,7 +146,7 @@ components.left.active[4] = {
     },
 }
 
-components.left.active[5] = {
+local git_branch = {
     provider = "git_branch",
     icon = " ",
     hl = {
@@ -165,7 +157,7 @@ components.left.active[5] = {
 }
 
 -- diffRemove
-components.left.active[6] = {
+local git_removed = {
     provider = "git_diff_removed",
     hl = {
         fg = colors.red,
@@ -175,7 +167,7 @@ components.left.active[6] = {
 }
 
 -- diffModfified
-components.left.active[7] = {
+local git_changed = {
     provider = "git_diff_changed",
     hl = {
         fg = colors.orange,
@@ -185,7 +177,7 @@ components.left.active[7] = {
 }
 
 -- diffAdded
-components.left.active[8] = {
+local git_added = {
     provider = "git_diff_added",
     hl = {
         fg = colors.green,
@@ -194,7 +186,7 @@ components.left.active[8] = {
     icon = " 落",
 }
 
-components.left.active[9] = {
+local git_right_sep = {
     provider = function()
         local git = vim.b.gitsigns_status_dict
         if git then
@@ -208,7 +200,7 @@ components.left.active[9] = {
     },
 }
 
-components.mid.active[1] = {
+local lsp_message = {
     provider = function()
         local Lsp = vim.lsp.util.get_progress_messages()[1]
         if Lsp then
@@ -247,14 +239,14 @@ components.mid.active[1] = {
     },
 }
 
-components.right.active[1] = {
+local lsp_left_sep = {
     provider = statusline_style.left,
     hl = {
         fg = section_color,
     }
 }
 
-components.right.active[2] = {
+local lsp_connected = {
     provider = function()
         if next(vim.lsp.buf_get_clients()) ~= nil then
             return " LSP"
@@ -272,7 +264,7 @@ components.right.active[2] = {
      end,
 }
 
-components.right.active[3] = {
+local lsp_errors = {
     provider = "diagnostic_errors",
     enabled = function()
         return lsp.diagnostics_exist "Error"
@@ -281,7 +273,7 @@ components.right.active[3] = {
     icon = "  "
 }
 
-components.right.active[4] = {
+local lsp_warnings = {
     provider = "diagnostic_warnings",
     enabled = function()
         return lsp.diagnostics_exist "Warning"
@@ -290,7 +282,7 @@ components.right.active[4] = {
     icon = " 𥉉"
 }
 
-components.right.active[5] = {
+local lsp_hints = {
     provider = "diagnostic_hints",
     enabled = function()
         return lsp.diagnostics_exist "Hint"
@@ -299,7 +291,7 @@ components.right.active[5] = {
     icon = "  "
 }
 
-components.right.active[6] = {
+local lsp_infos = {
     provider = "diagnostic_info",
     enabled = function()
         return lsp.diagnostics_exist "Information"
@@ -308,14 +300,15 @@ components.right.active[6] = {
     icon = "  "
 }
 
-components.right.active[7] = {
-    provider = statusline_style.right .. " " .. statusline_style.left,
+local lsp_right_sep = {
+    provider = statusline_style.right .. " ",
     hl = {
         fg = section_color,
     },
 }
 
-components.right.active[8] = {
+local position_icon = {
+    left_sep = { str = statusline_style.left, hi = {fg = section_color}},
     provider = " ",
     hl = {
         fg = colors.dark_purple,
@@ -323,7 +316,7 @@ components.right.active[8] = {
     },
 }
 
-components.right.active[9] = {
+local line_percentage = {
     provider = "line_percentage",
 
     hl = {
@@ -336,15 +329,74 @@ components.right.active[9] = {
         str = statusline_style.right .. " ",
         fg = section_color,
     }
-
 }
 
--- same bar for inactive windows
-if (hide_inactive) ~= false then
-    components.left.inactive = components.left.active
-    components.mid.inactive = components.mid.active
-    components.right.inactive = components.right.active
+
+
+
+
+local components = { active = {}, inactive = {} }
+
+----- ACTIVE ------
+
+-- Left
+table.insert(components.active, {
+    vim_mode,
+    file,
+    directory,
+    git_left_sep,
+    git_branch,
+    git_removed,
+    git_changed,
+    git_added,
+    git_right_sep
+})
+
+-- Middle
+table.insert(components.active, {
+    lsp_message
+})
+
+-- Right
+table.insert(components.active, {
+    lsp_left_sep,
+    lsp_connected,
+    lsp_errors,
+    lsp_warnings,
+    lsp_hints,
+    lsp_infos,
+    lsp_right_sep,
+    position_icon,
+    line_percentage
+})
+
+
+----- INACTIVE ------
+
+if (hide_inactive == false) then
+
+    -- Left
+    table.insert(components.inactive, {
+        file,
+        directory
+    })
+
+    -- Middle
+    table.insert(components.inactive, {
+
+    })
+
+    -- Right
+    table.insert(components.inactive, {
+        position_icon,
+        line_percentage
+    })
+
 end
+---------------------
+
+
+
 
 require("feline").setup {
     default_bg = colors.statusline_bg,

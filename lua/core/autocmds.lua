@@ -17,8 +17,7 @@ vim.cmd [[ autocmd BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"")
 -- Trim white spaces on save
 vim.cmd [[ autocmd BufWritePre * :%s/\s\+$//e ]]
 
--- Do not display mode in native statusline (has to be done here because something is setting it at startup)
--- vim.cmd [[ au BufEnter * :set noshowmode]]
+-- vim.cmd [[ autocmd Filetype NvimTree setlocal cursorline | setlocal laststatus=0 | echo "NvimTree autcmd"]]
 
 -- File extension specific tabbing
 -- vim.cmd [[ autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 ]]

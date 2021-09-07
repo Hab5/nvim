@@ -8,9 +8,6 @@ local g = vim.g
 
 vim.o.termguicolors = true
 
--- FIXME
--- vim.cmd [[ autocmd Filetype NvimTree setlocal cursorline | echo "NvimTree autcmd"]]
-
 g.nvim_tree_add_trailing = 0 -- append a trailing slash to folder names
 g.nvim_tree_allow_resize = 1
 g.nvim_tree_auto_close = 0 -- closes tree when it's the last window

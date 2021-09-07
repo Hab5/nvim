@@ -51,16 +51,24 @@ bg("NormalFloat", colors.black)
 -- Pmenu
 bg("Pmenu",      colors.lightbg2)
 bg("PmenuSbar",  colors.one_bg2)
-bg("PmenuSel",   colors.pmenu_bg)
-bg("PmenuThumb", colors.folder_bg)
+bg("PmenuSel",   colors.vibrant_green)
+bg("PmenuThumb", colors.red)
 
 -- misc
 fg("LineNr", colors.grey)
 
 fg("NvimInternalError", colors.red)
 
+
 -- inactive statuslines as thin splitlines
-fg("StatusLineNC", colors.one_bg2 .. " gui=underline")
+if (ui.plugin.statusline.hide_inactive == true) then
+    fg("StatusLineNC", colors.one_bg2 .. " gui=underline")
+else
+    bg("StatusLine",   colors.statusline_bg)
+    bg("StatusLineNC", colors.statusline_bg)
+end
+
+
 fg("VertSplit",    colors.one_bg2)
 
 -- selection color
@@ -115,7 +123,7 @@ fg("NvimTreeEmptyFolderName",  colors.blue)
 fg("NvimTreeEndOfBuffer",      colors.darker_black)
 fg("NvimTreeFolderIcon",       colors.folder_bg)
 fg("NvimTreeFolderName",       colors.folder_bg)
-fg("NvimTreeGitDirty",         colors.dark_purple)
+fg("NvimTreeGitDirty",         colors.sun)
 fg("NvimTreeIndentMarker",     colors.one_bg2)
 bg("NvimTreeNormal",           colors.darker_black)
 fg("NvimTreeOpenedFolderName", colors.blue)

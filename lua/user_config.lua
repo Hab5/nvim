@@ -28,9 +28,10 @@ M.ui = {
 M.ui.plugin = {
     -- statusline related options
     statusline = {
-        hide_inative = true, -- hide statusline on inactive buffers
+        hide_inactive = false,
         -- these are filetypes, not pattern matched
-        -- if a filetype is present in shown, it will always show the statusline, irrespective of filetypes in hidden
+        -- if a filetype is present in shown, statusline will be displayed,
+        -- irrespective of filetypes in hidden
         hidden = {},
         shown  = {},
         -- round , slant , block , arrow
@@ -43,6 +44,8 @@ M.options = {
     mapleader         = " ",
     clipboard         = "unnamedplus",
     showmode          = false, -- don't show mode in status line (let feline display that)
+    wrap              = false,
+    cursorline        = false,
     cmdheight         = 1,
     copy_cut          = true, -- copy cut text ( x key ), visual and normal mode
     copy_del          = true, -- copy deleted text ( dd key ), visual and normal mode
