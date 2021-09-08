@@ -1,81 +1,56 @@
--- IMPORTANT NOTE : This is the user config, can be edited. Will be preserved if updated with internal updater
-
 local M = {}
-M.ui, M.options, M.plugin_status, M.mappings, M.custom = {}, {}, {}, {}, {}
+M.global, M.options, M.plugin_status, M.ui, M.mappings, M.custom = {}, {}, {}, {}, {}, {}
 
--- non plugin ui configs, available without any plugins
-M.ui = {
-    italic_comments = false,
-
-    -- theme to be used, to see all available themes, open the theme switcher by <leader> + th
-    theme = "onedark",
-
-    -- theme toggler, toggle between two themes, see theme_toggleer mappings
-    theme_toggler = {
-        enabled = false,
-        fav_themes = {
-            "onedark",
-            "onenord",
-        },
-    },
-
-    -- Enable this only if your terminal has the colorscheme set which nvim uses
-    -- For Ex : if you have onedark set in nvim , set onedark's bg color on your terminal
-    transparency = false,
+-- global neovim options
+M.global = {
+    mapleader = " ", -- Space
 }
 
--- plugin related ui options
-M.ui.plugin = {
-    -- statusline related options
-    statusline = {
-        hide_inactive = false,
-        -- these are filetypes, not pattern matched
-        -- if a filetype is present in shown, statusline will be displayed,
-        -- irrespective of filetypes in hidden
-        hidden = {},
-        shown  = {},
-        -- round , slant , block , arrow
-        style = "round",
-    },
-}
-
--- non plugin normal, available without any plugins
+-- neovim options
 M.options = {
-    mapleader         = " ",
-    clipboard         = "unnamedplus",
-    showmode          = false, -- don't show mode in status line (let feline display that)
-    wrap              = false,
-    cursorline        = false,
-    cmdheight         = 1,
+    clipboard      = "unnamedplus", -- bridge system clipboard
+    mouse          = "a",           -- mouse support in all ("a") modes
+    number         = true,          -- display line numbers
+    relativenumber = true,          -- relative line numbers
+    numberwidth    = 2,             -- line number columns width (dynamically updated when needed)
+    showmode       = false,         -- disable mode display in command-line
+    wrap           = false,         -- wrap lines
+    cursorline     = false,         -- highlight the line under the cursor
+    cmdheight      = 1,             -- height of commandd-line (where messages are displayed)
+    expandtab      = true,          -- convert tab to space
+    smartindent    = true,          -- automatically indent new lines to the correct level
+    shiftwidth     = 4,             -- number of spaces used when shifting indentation
+    tabstop        = 4,             -- number of spaces that a <Tab> in the file counts for
+    hidden         = true,          -- keep multiple buffers open
+    ignorecase     = true,          -- ignore case in search patterns by default
+    undofile       = true,          -- allow persistent undo
+    timeoutlen     = 400,           -- how long to wait for a mapped sequence to complete
+    ruler          = false,         -- show line/cursor number in statusline (useless with feline)
+    updatetime     = 250,           -- time in ms to for the CursorHold (hover) event to trigger
+    pumheight      = 10,            -- maximum number of items displayed in the popup-window
+    signcolumn     = "yes",         -- always display gutter (used for diff/gitsigns)
+    inccommand     = "nosplit",     -- live buffer update of search and replace commands
+    splitbelow     = true,          -- always split below the active window
+    splitright     = true,          -- always vsplit to the right of the active window
+    termguicolors  = true,          -- use "gui" instead of "cterm" in highlight attributes
+    fillchars      = { eob = " " }, -- don't show "~" on end of buffer
+    scrolloff      = 5,             -- minimum number of lines to keep above/under the cursor
+    sidescrolloff  = 5,             -- mininum number of lines to keep to the left/right of the cursor
+    title          = true,          -- window title = active buffer
+    titlestring    = "%<%t - nvim", -- only show path tail in title
+
+}
+
+-- user defined options
+M.custom.options = {
+    autosave          = false, -- autosave on changed text or insert mode leave
     copy_cut          = true, -- copy cut text ( x key ), visual and normal mode
     copy_del          = true, -- copy deleted text ( dd key ), visual and normal mode
-    expandtab         = true,
-    hidden            = true,
-    ignorecase        = true,
-    insert_nav        = true, -- navigation in insertmode
-    mouse             = "a",
-    number            = true,
-    numberwidth       = 2,
-    permanent_undo    = true,
-    shiftwidth        = 4,
-    smartindent       = true,
-    tabstop           = 4, -- Number of spaces that a <Tab> in the file counts for
-    timeoutlen        = 400,
-    relativenumber    = true,
-    ruler             = false,
-    updatetime        = 250,
-    pumheight         = 10,
-    title             = false, -- Window title = active buffer
-}
-
--- these are plugin related options
-M.options.plugin = {
-    autosave = false, -- autosave on changed text or insert mode leave
     -- timeout to be used for using escape with a key combination, see mappings.plugin.better_escape
     esc_insertmode_timeout = 300,
 }
 
--- enable and disable plugins (false for disable)
+-- enable and disable plugins
 M.plugin_status = {
     autosave          = false, -- to autosave files
     blankline         = false, -- beautified blank lines
@@ -98,6 +73,26 @@ M.plugin_status = {
     vim_matchup       = true, -- % magic, match it but improved
 }
 
+
+-- non plugin ui configs, available without any plugins
+M.ui = {
+    theme = "onedark", -- <SPC - th> to see available themes
+    italic_comments = false,
+
+    -- Enable this only if your terminal has the colorscheme set which nvim uses
+    -- For Ex : if you have onedark set in nvim , set onedark's bg color on your terminal
+    transparency = false,
+}
+
+-- plugin related ui options
+M.ui.plugin = {
+    statusline = {
+        style = "round",       -- "round" | "slant" | "block" | "arrow"
+        hide_inactive = false, -- hide statusline on inactive buffers
+        hidden = {},           -- hide statusline on FileTypes
+        shown  = {},           -- force statusline on FileTypes (> hidden)
+    },
+}
 -- mappings -- don't use a single keymap twice --
 -- non plugin mappings
 M.mappings = {
@@ -121,9 +116,6 @@ M.mappings = {
         prev_blank_line   = "<C-Up>",
         next_blank_line   = "<C-Down>",
     },
-
-    theme_toggler      = "<leader>tt", -- for theme toggler, see in ui.theme_toggler
-    -- new_tab = "<C-t>b", -- open a new vim tab
 
     -- terminal related mappings
     terminal = {
@@ -204,17 +196,17 @@ M.mappings.plugin = {
     },
 
     truezen = { -- distraction free modes mapping, hide statusline, tabline, line numbers
-    ataraxis_mode     = "<leader>zz", -- center
-    focus_mode        = "<leader>zf",
-    minimalistic_mode = "<leader>zm", -- as it is
-},
+        ataraxis_mode     = "<leader>zz", -- center
+        focus_mode        = "<leader>zf",
+        minimalistic_mode = "<leader>zm", -- as it is
+    },
 
-vim_fugitive = {
-    diff_get_2 = "<leader>gh",
-    diff_get_3 = "<leader>gl",
-    git        = "<leader>gs",
-    git_blame  = "<leader>gb",
-},
+    vim_fugitive = {
+        diff_get_2 = "<leader>gh",
+        diff_get_3 = "<leader>gl",
+        git        = "<leader>gs",
+        git_blame  = "<leader>gb",
+    },
 }
 
 -- user custom mappings
@@ -226,11 +218,11 @@ vim_fugitive = {
 -- cmd:  for vim commands, must use ':' at start and add <CR> at the end if want to execute
 -- options: see :h nvim_set_keymap() opts section
 M.custom.mappings = {
-    -- clear_all = {
-        --    "n",
-        --    "<leader>cc",
-        --    "gg0vG$d",
-        -- },
-    }
+-- clear_all = {
+    --    "n",
+    --    "<leader>cc",
+    --    "gg0vG$d",
+    -- },
+}
 
-    return M
+return M

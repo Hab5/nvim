@@ -40,7 +40,7 @@ end
 
 M.better_escape = function()
     local config = require("core.utils").load_config()
-    vim.g.better_escape_interval = config.options.plugin.esc_insertmode_timeout or 300
+    vim.g.better_escape_interval = config.custom.options.esc_insertmode_timeout or 300
 end
 
 M.blankline = function()

@@ -170,7 +170,7 @@ return packer.startup(function()
             require("plugins.configs.others").autosave()
         end,
         cond = function()
-            return require("core.utils").load_config().options.plugin.autosave == true
+            return require("core.utils").load_config().custom.plugin.autosave == true
         end,
     }
 
@@ -189,8 +189,13 @@ return packer.startup(function()
     -- load luasnips + cmp related in insert mode only
 
     use {
+        "rafamadriz/friendly-snippets",
+        after = "InsertEnter",
+    }
+
+    use {
         "hrsh7th/nvim-cmp",
-        event = "InsertEnter",
+        after = "friendly-snippets",
         config = function()
             require "plugins.configs.cmp"
         end,
@@ -225,10 +230,6 @@ return packer.startup(function()
         after = "cmp-nvim-lsp",
     }
 
-    use {
-        "rafamadriz/friendly-snippets",
-        after = "cmp-buffer",
-    }
 
     -- misc plugins
     use {

@@ -1,79 +1,44 @@
-local opt = vim.opt
 local g = vim.g
+local opt = vim.opt
 
 -- export user config as a global varibale
 g.user_config = "user_config"
 
+local global = require("core.utils").load_config().global
+for key, value in pairs(global) do
+    g[key] = value
+end
+
 local options = require("core.utils").load_config().options
+for key, value in pairs(options) do
+    opt[key] = value
+end
 
-opt.clipboard  = options.clipboard
-opt.cmdheight  = options.cmdheight
-opt.cursorline = options.cursorline
-opt.wrap       = options.wrap
+opt.shortmess:append "Ilncowx" -- :h shortmess for more information
+opt.whichwrap:append "<>hl" -- prev/next line with left/right when EOL
 
--- Number of item displayed in the completion menu
-opt.pumheight = options.pumheight
-
--- Indentline
-opt.expandtab = options.expandtab
-opt.shiftwidth = options.shiftwidth
-opt.smartindent = options.smartindent
-
--- disable tilde on end of buffer: https://github.com/  neovim/neovim/pull/8546#issuecomment-643643758
-opt.fillchars = { eob = " " }
-opt.title = options.title
-opt.hidden = options.hidden
-opt.ignorecase = options.ignorecase
-opt.mouse = options.mouse
-
--- Numbers
-opt.number = options.number
-opt.numberwidth = options.numberwidth
-opt.relativenumber = options.relativenumber
-opt.ruler = options.ruler
-
--- disable nvim intro
-opt.shortmess:append "sI"
-
-opt.signcolumn = "yes"
-opt.inccommand = "nosplit"
-opt.splitbelow = true
-opt.splitright = true
-opt.tabstop = options.tabstop
-opt.termguicolors = true
-opt.timeoutlen = options.timeoutlen
-opt.undofile = options.permanent_undo
-opt.showmode = options.showmode;
--- interval for writing swap file to disk, also used by gitsigns
-opt.updatetime = options.updatetime
-
--- go to previous/next line with h,l,left arrow and right arrow
--- when cursor reaches end/beginning of line
-opt.whichwrap:append "<>hl"
-
-g.mapleader = options.mapleader
 -- disable some builtin vim plugins
 local disabled_built_ins = {
-   "2html_plugin",
-   "getscript",
-   "getscriptPlugin",
-   "gzip",
-   "logipat",
-   "netrw",
-   "netrwPlugin",
-   "netrwSettings",
-   "netrwFileHandlers",
-   "matchit",
-   "tar",
-   "tarPlugin",
-   "rrhelper",
-   "spellfile_plugin",
-   "vimball",
-   "vimballPlugin",
-   "zip",
-   "zipPlugin",
+    "2html_plugin",
+    "getscript",
+    "getscriptPlugin",
+    "gzip",
+    "logipat",
+    "netrw",
+    "netrwPlugin",
+    "netrwSettings",
+    "netrwFileHandlers",
+    "matchit",
+    "tar",
+    "tarPlugin",
+    "rrhelper",
+    "spellfile_plugin",
+    "vimball",
+    "vimballPlugin",
+    "zip",
+    "zipPlugin",
 }
 
 for _, plugin in pairs(disabled_built_ins) do
-   g["loaded_" .. plugin] = 1
+    g["loaded_" .. plugin] = 1
 end

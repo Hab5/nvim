@@ -16,6 +16,9 @@ M.misc = function()
         map({"n", "v"}, maps.beginning_of_line, "^")
         map({"n", "v"}, maps.prev_blank_line, "{")
         map({"n", "v"}, maps.next_blank_line, "}")
+        map("i", maps.beginning_of_line, "<ESC>^i")
+        map("i", maps.prev_blank_line,   "<ESC>{i")
+        map("i", maps.next_blank_line,   "<ESC>}i")
 
         -- Move line/selection up/down
         map("v", maps.move_line_down, ":'<,'> m '>+1 <CR>gv=gv")
@@ -43,30 +46,13 @@ M.misc = function()
 
     local function optional_mappings()
         -- don't yank text on cut ( x )
-        if not config.options.copy_cut then
+        if not config.custom.options.copy_cut then
             map({ "n", "v" }, "x", '"_x')
         end
 
         -- don't yank text on delete ( dd )
-        if not config.options.copy_del then
+        if not config.custom.options.copy_del then
             map({ "n", "v" }, "dd", '"_dd')
-        end
-
-        -- navigation within insert mode
-        if config.options.insert_nav then
-            local inav = maps.insert_nav
-            map("i", inav.beginning_of_line, "<ESC>^i")
-            map("i", inav.prev_blank_line,   "<ESC>{i")
-            map("i", inav.next_blank_line,   "<ESC>}i")
-        end
-
-        -- check the theme toggler
-        if config.ui.theme_toggler then
-            map(
-            "n",
-            maps.theme_toggler,
-            ":lua require('nvchad').toggle_theme(require('core.utils').load_config().ui.theme_toggler.fav_themes) <CR>"
-            )
         end
     end
 
