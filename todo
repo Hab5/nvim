@@ -1,10 +1,13 @@
+- integrate pomodoro to bufferline
+- better mapping management
+- config treesitter
 - change colors name, project wise (*sigh*)
 - get rid of nvchad "extension" package at some point
 - better "file written" message
 - number of search result in feline
 - highlight selection under cursor inbetween blink
 - code action automatic if only one choice
-- better code actions menu
+- use telescope instead of qf menu for code actions
 - man & cppman open in floating window, with K
 - diagnostic curly underline
 - better find word in telescope

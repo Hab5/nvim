@@ -54,7 +54,7 @@ local mode_colors = {
 
 local vim_mode = {
     left_sep = {
-        str = " " .. statusline_style.left,
+        str = statusline_style.left,
         hi = {
             fg = section_color,
         },
@@ -73,7 +73,7 @@ local vim_mode = {
     end,
 
     right_sep = {
-        str = statusline_style.right,
+        str = statusline_style.right .. " ",
         hi = {
             fg = section_color,
         },
@@ -83,7 +83,7 @@ local vim_mode = {
 
 local file = {
     left_sep = {
-        str = " " .. statusline_style.left,
+        str = statusline_style.left,
         hi = {
             fg = section_color,
         },
@@ -95,8 +95,10 @@ local file = {
         local icon = require("nvim-web-devicons").get_icon(filename, extension)
 
         if icon == nil then
-            icon = " "
-            return icon
+            icon = ""
+            if filename == "" then
+                return icon .. " "
+            end
         end
 
         return icon .. " " .. filename .. " "
@@ -133,7 +135,7 @@ local directory = {
 
 local git_left_sep = {
     provider = function()
-        local git = vim.b.gitsigns_status_dict
+        local git = vim.g.gitsigns_head or vim.b.gitsigns_head
         if git then
             return " " .. statusline_style.left
         else
@@ -188,7 +190,7 @@ local git_added = {
 
 local git_right_sep = {
     provider = function()
-        local git = vim.b.gitsigns_status_dict
+        local git = vim.g.gitsigns_head or vim.b.gitsigns_head
         if git then
             return statusline_style.right .. " "
         else
@@ -326,7 +328,7 @@ local line_percentage = {
     },
 
     right_sep = {
-        str = statusline_style.right .. " ",
+        str = statusline_style.right,
         fg = section_color,
     }
 }

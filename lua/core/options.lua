@@ -14,7 +14,7 @@ for key, value in pairs(options) do
     opt[key] = value
 end
 
-opt.shortmess:append "Ilncowx" -- :h shortmess for more information
+opt.shortmess:append "cIao" -- :h shortmess for more information
 opt.whichwrap:append "<>hl" -- prev/next line with left/right when EOL
 
 -- disable some builtin vim plugins

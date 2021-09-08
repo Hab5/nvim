@@ -36,8 +36,10 @@ M.options = {
     fillchars      = { eob = " " }, -- don't show "~" on end of buffer
     scrolloff      = 5,             -- minimum number of lines to keep above/under the cursor
     sidescrolloff  = 5,             -- mininum number of lines to keep to the left/right of the cursor
-    title          = true,          -- window title = active buffer
+    title          = false,         -- window title = active buffer
     titlestring    = "%<%t - nvim", -- only show path tail in title
+    foldmethod     = "manual",        -- experimental treesitter based folding
+    foldexpr       = "nvim_treesitter#foldexpr()"
 
 }
 
@@ -93,6 +95,7 @@ M.ui.plugin = {
         shown  = {},           -- force statusline on FileTypes (> hidden)
     },
 }
+
 -- mappings -- don't use a single keymap twice --
 -- non plugin mappings
 M.mappings = {

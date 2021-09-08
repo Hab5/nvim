@@ -36,7 +36,7 @@ end
 -- Disable cursor line
 -- cmd "hi clear CursorLine"
 
-bg("CursorLine" , colors.one_bg)
+bg("CursorLine", colors.one_bg)
 
 -- Line number
 fg("cursorlinenr", colors.white)
@@ -58,7 +58,6 @@ bg("PmenuThumb", colors.red)
 fg("LineNr", colors.grey)
 
 fg("NvimInternalError", colors.red)
-
 
 -- inactive statuslines as thin splitlines
 if (ui.plugin.statusline.hide_inactive == true) then
