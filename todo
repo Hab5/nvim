@@ -1,3 +1,5 @@
+- line number colored with lsp diagnostics
+- hide diagnostic popup when diagnostic doens't exist anymore
 - get rid of nvchad theme management, create your own
 - integrate pomodoro to bufferline
 - better mapping management

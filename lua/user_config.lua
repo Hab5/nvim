@@ -178,8 +178,8 @@ M.mappings.plugin = {
     },
 
     telescope = {
-        buffers         = "<leader>fb",
-        find_files      = "<leader>ff",
+        buffers         = "<leader><",
+        find_files      = "<leader><leader>",
         grep_buffer     = "<leader>ss",
         file_browser    = "<leader>.",
         git_commits     = "<leader>cm",
@@ -188,11 +188,14 @@ M.mappings.plugin = {
         live_grep       = "<leader>fw",
         oldfiles        = "<leader>fo",
         themes          = "<leader>th",
+        treesitter      = "<leader>ts",
         -- lsp related
         references      = "gr",
         code_action     = "<leader>ca",
         doc_diagnostics = "<leader>d",
         ws_diagnostics  = "<leader>D",
+        doc_symbols     = "<leader>q",
+        ws_symbols      = "<leader>Q"
     },
 
     lsp = { -- TODO: Actually use these in lspconfig.lua

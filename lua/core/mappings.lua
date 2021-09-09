@@ -25,8 +25,8 @@ M.misc = function()
         map("v", maps.move_line_up,   ":'<,'> m '<-2 <CR>gv=gv")
         map("n", maps.move_line_down, ":m +1 <CR>==")
         map("n", maps.move_line_up,   ":m -2 <CR>==")
-        map("i", maps.move_line_down, ":m +1 <CR>==i")
-        map("i", maps.move_line_up,   ":m -2 <CR>==i")
+        map("i", maps.move_line_down, "<Esc>:m +1 <CR>==i")
+        map("i", maps.move_line_up,   "<Esc>:m -2 <CR>==i")
 
         -- Don't copy the replaced text after pasting in visual mode
         map("v", "p", '"_dP')
@@ -174,12 +174,15 @@ M.telescope = function()
     map("n", m.live_grep,       ":Telescope live_grep <CR>")
     map("n", m.oldfiles,        ":Telescope oldfiles <CR>")
     map("n", m.themes,          ":Telescope themes <CR>")
+    map("n", m.treesitter,      ":Telescope treesitter <CR>")
     -- lsp related
     map("n", m.references,      ":Telescope lsp_references <CR>")
-    map("n", m.code_action,     ":Telescope lsp_code_actions <CR>")
-    map("v", m.code_action,     ":Telescope lsp_range_code_actions <CR>")
+    map("n", m.code_action,     ":Telescope lsp_code_actions theme=get_cursor <CR>")
+    map("v", m.code_action,     ":Telescope lsp_range_code_actions theme=get_cursor <CR>")
     map("n", m.doc_diagnostics, ":Telescope lsp_document_diagnostics <CR>")
+    map("n", m.doc_symbols,     ":Telescope lsp_document_symbols <CR>")
     map("n", m.ws_diagnostics,  ":Telescope lsp_workspace_diagnostics <CR>")
+    map("n", m.ws_symbols,      ":Telescope lsp_dynamic_workspace_symbols <CR>")
 end
 
 M.telescope_media = function()
