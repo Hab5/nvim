@@ -178,16 +178,33 @@ M.mappings.plugin = {
     },
 
     telescope = {
-        buffers      = "<leader>fb",
-        find_files   = "<leader>ff",
-        grep_buffer  = "<leader>ss",
-        file_browser = "<leader>.",
-        git_commits  = "<leader>cm",
-        git_status   = "<leader>gt",
-        help_tags    = "<leader>fh",
-        live_grep    = "<leader>fw",
-        oldfiles     = "<leader>fo",
-        themes       = "<leader>th",
+        buffers         = "<leader>fb",
+        find_files      = "<leader>ff",
+        grep_buffer     = "<leader>ss",
+        file_browser    = "<leader>.",
+        git_commits     = "<leader>cm",
+        git_status      = "<leader>gt",
+        help_tags       = "<leader>fh",
+        live_grep       = "<leader>fw",
+        oldfiles        = "<leader>fo",
+        themes          = "<leader>th",
+        -- lsp related
+        references      = "gr",
+        code_action     = "<leader>ca",
+        doc_diagnostics = "<leader>d",
+        ws_diagnostics  = "<leader>D",
+    },
+
+    lsp = { -- TODO: Actually use these in lspconfig.lua
+        definition       = "gd",
+        declaration      = "gD",
+        documentation    = "K",
+        workspace_add    = "<space>wa",
+        workspace_remove = "<space>wr",
+        workspace_list   = "<space>wl",
+        rename_symbol    = "<space>rn",
+        next_diagnostic  = "]d",
+        prev_diagnostic  = "[d",
     },
 
     telescope_media = {

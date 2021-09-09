@@ -1,3 +1,4 @@
+- get rid of nvchad theme management, create your own
 - integrate pomodoro to bufferline
 - better mapping management
 - config treesitter
@@ -29,6 +30,5 @@
 - figure out what's going on with signatures, and add them to the mini buffer
 - add new telescope bindings
 - improve colon commands prompt/completion (ideally with something like ivy, maybe Telescope ?)
-- telescope scroll preview with mouse, use to work, why did it stop?
 - comment with slash in cpp
 - docsets in telescope? (doesn't seem to be a thing, might want to think about doing it)

@@ -41,6 +41,7 @@ return packer.startup(function()
         end,
     }
 
+
     use {
         "famiu/feline.nvim",
         disable = not plugin_status.feline,

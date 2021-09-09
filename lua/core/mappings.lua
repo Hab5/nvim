@@ -164,16 +164,22 @@ end
 
 M.telescope = function()
     local m = plugin_maps.telescope
-    map("n", m.buffers,      ":Telescope buffers <CR>")
-    map("n", m.find_files,   ":Telescope find_files <CR>")
-    map("n", m.grep_buffer,  ":Telescope current_buffer_fuzzy_find <CR>")
-    map("n", m.file_browser, ":Telescope file_browser <CR>")
-    map("n", m.git_commits,  ":Telescope git_commits <CR>")
-    map("n", m.git_status,   ":Telescope git_status <CR>")
-    map("n", m.help_tags,    ":Telescope help_tags <CR>")
-    map("n", m.live_grep,    ":Telescope live_grep <CR>")
-    map("n", m.oldfiles,     ":Telescope oldfiles <CR>")
-    map("n", m.themes,       ":Telescope themes <CR>")
+    map("n", m.buffers,         ":Telescope buffers <CR>")
+    map("n", m.find_files,      ":Telescope find_files <CR>")
+    map("n", m.grep_buffer,     ":Telescope current_buffer_fuzzy_find <CR>")
+    map("n", m.file_browser,    ":Telescope file_browser <CR>")
+    map("n", m.git_commits,     ":Telescope git_commits <CR>")
+    map("n", m.git_status,      ":Telescope git_status <CR>")
+    map("n", m.help_tags,       ":Telescope help_tags <CR>")
+    map("n", m.live_grep,       ":Telescope live_grep <CR>")
+    map("n", m.oldfiles,        ":Telescope oldfiles <CR>")
+    map("n", m.themes,          ":Telescope themes <CR>")
+    -- lsp related
+    map("n", m.references,      ":Telescope lsp_references <CR>")
+    map("n", m.code_action,     ":Telescope lsp_code_actions <CR>")
+    map("v", m.code_action,     ":Telescope lsp_range_code_actions <CR>")
+    map("n", m.doc_diagnostics, ":Telescope lsp_document_diagnostics <CR>")
+    map("n", m.ws_diagnostics,  ":Telescope lsp_workspace_diagnostics <CR>")
 end
 
 M.telescope_media = function()
