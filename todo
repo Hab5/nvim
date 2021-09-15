@@ -1,3 +1,4 @@
+- preview of cppman pages in telescope not working ?
 - line number colored with lsp diagnostics
 - hide diagnostic popup when diagnostic doens't exist anymore
 - get rid of nvchad theme management, create your own
@@ -12,25 +13,9 @@
 - code action automatic if only one choice
 - use telescope instead of qf menu for code actions
 - man & cppman open in floating window, with K
-- diagnostic curly underline
-- better find word in telescope
 - add an align function
-- try disabling statusline for focused window only
-- think of custom elements to add to bufferline (git diff/change/delete?)
+- automatically go to indentation level on insert
+- better looking folds
+- move through CamelCase & snake_case as words
 - change fg of matching scope token instead of bg
-- add border to signature popup thingy
-- better git signs color
-- set floating window with curved border
-- change paragraph to language specific block ? (maybe treesitter can do that)
 - add keybinding toggleterm / make the toggle binding modifiable from user_config
-- add toggleterms with commands (gdb/lazygit/ranger etc) (and create a picker in telescope) +bindings
-- figure out why the nvimtree autocmd won't work with setlocal
-- switch ctrl/shift + right/left in normal/visual mode
-- see if possible to select with shift + (ctrl/home/end/home/end)
-- better sorting of completion
-- selection color blue
-- figure out what's going on with signatures, and add them to the mini buffer
-- add new telescope bindings
-- improve colon commands prompt/completion (ideally with something like ivy, maybe Telescope ?)
-- comment with slash in cpp
-- docsets in telescope? (doesn't seem to be a thing, might want to think about doing it)

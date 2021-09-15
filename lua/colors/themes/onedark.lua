@@ -1,6 +1,7 @@
 local colors = {
    white = "#abb2bf",
    darker_black = "#1b1f27",
+   --black = -- "#121418",
    black = "#1e222a", --  nvim bg
    black2 = "#252931",
    one_bg = "#282c34", -- real bg of onedark
@@ -31,5 +32,39 @@ local colors = {
    pmenu_bg = "#7eca9c", -- same as vibrant_green
    folder_bg = "#61afef",
 }
+
+-- local colors = {
+--    white = "#abb2bf",
+--    darker_black = "#0d0f13",
+--    black = "#0f1115",
+--    black2 = "#121418",
+--    one_bg = "#14161a", -- real bg of onedark
+--    one_bg2 = "#1a1d22",
+--    one_bg3 = "#181a1e",
+--    grey = "#212327",
+--    grey_fg = "#2b2e32",
+--    grey_fg2 = "#37393d",
+--    light_grey = "#37393d",
+--    red = "#d47d85",
+--    baby_pink = "#DE8C92",
+--    pink = "#ff75a0",
+--    line = "#15171b", -- for lines like vertsplit
+--    green = "#A3BE8C",
+--    vibrant_green = "#7eca9c",
+--    nord_blue = "#81A1C1",
+--    blue = "#61afef",
+--    yellow = "#e7c787",
+--    sun = "#EBCB8B",
+--    purple = "#b4bbc8",
+--    dark_purple = "#c882e7",
+--    teal = "#519ABA",
+--    orange = "#D19A66",
+--    cyan = "#a3b8ef",
+--    statusline_bg = "#111317",
+--    lightbg = "#16181c",
+--    lightbg2 = "#131519",
+--    pmenu_bg = "#7eca9c", -- same as vibrant_green
+--    folder_bg = "#61afef",
+-- }
 
 return colors

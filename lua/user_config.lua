@@ -91,7 +91,7 @@ M.ui.plugin = {
     statusline = {
         style = "round",       -- "round" | "slant" | "block" | "arrow"
         hide_inactive = false, -- hide statusline on inactive buffers
-        hidden = {},           -- hide statusline on FileTypes
+        hidden = {"NvimTree"},           -- hide statusline on FileTypes
         shown  = {},           -- force statusline on FileTypes (> hidden)
     },
 }
@@ -188,6 +188,7 @@ M.mappings.plugin = {
         live_grep       = "<leader>fw",
         oldfiles        = "<leader>fo",
         themes          = "<leader>th",
+        man_pages       = "<leader>mp",
         treesitter      = "<leader>ts",
         -- lsp related
         references      = "gr",

@@ -32,9 +32,7 @@ M.misc = function()
         map("v", "p", '"_dP')
 
         -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
-        -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
         -- empty mode is same as using :map
-        -- also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
         map("", "j", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true })
         map("", "k", 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', { expr = true })
         map("", "<Down>", 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', { expr = true })
@@ -81,15 +79,13 @@ M.misc = function()
         -- terminal mappings end --
 
         -- Add Packer commands because we are not loading it at startup
-        cmd "silent! command PackerClean lua require 'plugins' require('packer').clean()"
+        cmd "silent! command PackerClean   lua require 'plugins' require('packer').clean()"
         cmd "silent! command PackerCompile lua require 'plugins' require('packer').compile()"
         cmd "silent! command PackerInstall lua require 'plugins' require('packer').install()"
-        cmd "silent! command PackerStatus lua require 'plugins' require('packer').status()"
-        cmd "silent! command PackerSync lua require 'plugins' require('packer').sync()"
-        cmd "silent! command PackerUpdate lua require 'plugins' require('packer').update()"
+        cmd "silent! command PackerStatus  lua require 'plugins' require('packer').status()"
+        cmd "silent! command PackerSync    lua require 'plugins' require('packer').sync()"
+        cmd "silent! command PackerUpdate  lua require 'plugins' require('packer').update()"
 
-        -- add ChadReload command and maping
-        -- cmd "silent! command! ConfigReload lua require('user_config').reload_config()"
     end
 
     local function user_config_mappings()
@@ -155,7 +151,6 @@ end
 
 M.nvimtree = function()
     map("n", plugin_maps.nvimtree.toggle, ":NvimTreeToggle <CR>")
-    -- map("n", plugin_maps.nvimtree.focus, ":NvimTreeFocus <CR>")
 end
 
 M.neoformat = function()
@@ -174,6 +169,8 @@ M.telescope = function()
     map("n", m.live_grep,       ":Telescope live_grep <CR>")
     map("n", m.oldfiles,        ":Telescope oldfiles <CR>")
     map("n", m.themes,          ":Telescope themes <CR>")
+    map("n", m.man_pages,       -- section 3 for cppman pages
+    ":lua require('telescope.builtin').man_pages({sections={'3',}}) <CR>")
     map("n", m.treesitter,      ":Telescope treesitter <CR>")
     -- lsp related
     map("n", m.references,      ":Telescope lsp_references <CR>")

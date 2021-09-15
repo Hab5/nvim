@@ -372,7 +372,6 @@ table.insert(components.active, {
     line_percentage
 })
 
-
 ----- INACTIVE ------
 
 if (hide_inactive == false) then
@@ -384,9 +383,7 @@ if (hide_inactive == false) then
     })
 
     -- Middle
-    table.insert(components.inactive, {
-
-    })
+    table.insert(components.inactive, {})
 
     -- Right
     table.insert(components.inactive, {
@@ -395,13 +392,20 @@ if (hide_inactive == false) then
     })
 
 end
+
 ---------------------
 
-
-
-
 require("feline").setup {
-    default_bg = colors.statusline_bg,
-    default_fg = colors.fg,
     components = components,
+
+    colors = {
+        fg = colors.fg,
+        bg = colors.statusline_bg,
+    },
+
+    disable = {
+        filetypes = { "NvimTree", "packer" },
+        buftypes  = { "terminal" },
+        bufnames  = { }
+    }
 }

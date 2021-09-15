@@ -36,6 +36,7 @@ end
 -- Disable cursor line
 -- cmd "hi clear CursorLine"
 
+bg("Normal", colors.black)
 bg("CursorLine", colors.one_bg)
 
 -- Line number
