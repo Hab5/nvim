@@ -13,5 +13,6 @@ vim.cmd [[ autocmd BufWritePre * :%s/\s\+$//e ]]
 -- Comment with slashes in c/c++
 vim.cmd [[ autocmd BufEnter *.cpp,*.hpp,*.c,*.h :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s") ]]
 
--- File extension specific tabbing
--- vim.cmd [[ autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 ]]
+-- Highlight yanked region
+vim.cmd [[ autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup="FloatBorder", timeout=250} ]]
+

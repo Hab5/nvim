@@ -89,20 +89,25 @@ local file = {
         },
     },
 
-    provider = function()
-        local filename = vim.fn.expand "%:t"
-        local extension = vim.fn.expand "%:e"
-        local icon = require("nvim-web-devicons").get_icon(filename, extension)
+--     provider = function()
+--         local filename = vim.fn.expand "%:t"
+--         local extension = vim.fn.expand "%:e"
+--         local icon = require("nvim-web-devicons").get_icon(filename, extension)
+--
+--         if icon == nil then
+--             icon = ""
+--             if filename == "" then
+--                 return icon .. " "
+--             end
+--         end
+--
+--         return icon .. " " .. filename .. " "
+--     end,
 
-        if icon == nil then
-            icon = ""
-            if filename == "" then
-                return icon .. " "
-            end
-        end
-
-        return icon .. " " .. filename .. " "
-    end,
+    provider = "file_info",
+    colored_icon = false,
+    file_readonly_icon = '',
+    file_modified_icon = '',
 
     hl = {
         fg = colors.vibrant_green,
