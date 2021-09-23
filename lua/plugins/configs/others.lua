@@ -90,6 +90,15 @@ M.comment = function()
     end
 end
 
+M.hop = function()
+    local present, hop = pcall(require, "hop")
+    if present then
+        hop.setup {
+            teasing = false,
+        }
+    end
+end
+
 M.luasnip = function()
     local present, luasnip = pcall(require, "luasnip")
     if not present then

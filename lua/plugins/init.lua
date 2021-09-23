@@ -73,6 +73,18 @@ return packer.startup(function()
     }
 
     use {
+        "phaazon/hop.nvim",
+        as = "hop",
+        event = "BufRead",
+        config = function()
+            require("plugins.configs.others").hop()
+        end,
+        setup = function()
+            require("core.mappings").hop()
+        end,
+    }
+
+    use {
         "lukas-reineke/indent-blankline.nvim",
         disable = not plugin_status.blankline,
         event = "BufRead",
@@ -187,8 +199,14 @@ return packer.startup(function()
         end,
     }
 
-    -- load luasnips + cmp related in insert mode only
+    -- use {
+    --     "ms-jpq/coq_nvim",
+    --     event = "InsertEnter",
+    --     config = function()
+    --     end,
+    -- }
 
+    -- load luasnips + cmp related in insert mode only
     use {
         "rafamadriz/friendly-snippets",
         event = "InsertEnter",
@@ -201,6 +219,8 @@ return packer.startup(function()
             require "plugins.configs.cmp"
         end,
     }
+
+    -- use { "tzachar/cmp-tabnine", after="nvim-cmp", run="./install.sh" }
 
     use {
         "L3MON4D3/LuaSnip",
@@ -230,7 +250,6 @@ return packer.startup(function()
         "hrsh7th/cmp-buffer",
         after = "cmp-nvim-lsp",
     }
-
 
     -- misc plugins
     use {

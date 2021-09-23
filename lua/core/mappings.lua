@@ -28,6 +28,18 @@ M.misc = function()
         map("i", maps.move_line_down, "<Esc>:m +1 <CR>==i")
         map("i", maps.move_line_up,   "<Esc>:m -2 <CR>==i")
 
+        -- Switch to last buffer
+        map("n", "<Backspace>", "<C-^>")
+
+        -- Repeat operator over visual selection
+        map("v", ".", ":normal . <CR>")
+
+        -- Execute macro in q register over visual selection
+        map("v", "Q", ":'<,'>:normal @q <CR>")
+
+        -- Don't copy changed text
+        map("n", "c", '"_c')
+
         -- Don't copy the replaced text after pasting in visual mode
         map("v", "p", '"_dP')
 
@@ -147,6 +159,12 @@ M.dashboard = function()
     map("n", m.open,         ":Dashboard <CR>")
     map("n", m.session_load, ":SessionLoad <CR>")
     map("n", m.session_save, ":SessionSave <CR>")
+end
+
+M.hop = function()
+    map({"n", "o"}, plugin_maps.hop.char_one,   ":HopChar1<CR>", { silent = true })
+    map({"n", "o"}, plugin_maps.hop.char_two,   ":HopChar2<CR>", { silent = true })
+    map({"n", "o"}, plugin_maps.hop.line_start, ":HopLineStart<CR>", { silent = true })
 end
 
 M.nvimtree = function()

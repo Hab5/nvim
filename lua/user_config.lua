@@ -58,12 +58,13 @@ M.plugin_status = {
     blankline         = false, -- beautified blank lines
     bufferline        = true, -- buffer shown as tabs
     cheatsheet        = true, -- fuzzy search your commands/keymappings
-    colorizer         = true,
+    colorizer         = true, -- pretty colors
     comment           = true, -- universal commentor
     dashboard         = true, -- a nice looking dashboard
     esc_insertmode    = true, -- escape from insert mode using custom keys
     feline            = true, -- statusline
     gitsigns          = true, -- gitsigns in statusline
+    hop               = true, -- better motions
     lspkind           = true, -- lsp enhancements
     lspsignature      = true, -- lsp enhancements
     neoformat         = true, -- universal formatter
@@ -136,6 +137,10 @@ M.mappings = {
 -- all plugins related mappings
 -- to get short info about a plugin, see the respective string in plugin_status, if not present, then info here
 M.mappings.plugin = {
+    better_escape = {
+        esc_insertmode = { "jk" }, -- multiple mappings allowed
+    },
+
     bufferline = {
         next_buffer = "<TAB>", -- next buffer
         prev_buffer = "<S-Tab>", -- previous buffer
@@ -164,9 +169,10 @@ M.mappings.plugin = {
         session_save = "<leader>s", -- save a session
     },
 
-    -- note: this is an edditional mapping to escape, escape key will still work
-    better_escape = {
-        esc_insertmode = { "jk" }, -- multiple mappings allowed
+    hop = {
+        char_one = "s",
+        char_two = "S",
+        line_start = "", -- <C-Space>
     },
 
     nvimtree = {
@@ -179,7 +185,7 @@ M.mappings.plugin = {
 
     telescope = {
         buffers         = "<leader><",
-        find_files      = "<leader><leader>",
+        find_files      = "<leader>ff",
         grep_buffer     = "<leader>ss",
         file_browser    = "<leader>.",
         git_commits     = "<leader>cm",
