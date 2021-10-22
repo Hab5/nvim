@@ -28,6 +28,10 @@ M.misc = function()
         map("i", maps.move_line_down, "<Esc>:m +1 <CR>==i")
         map("i", maps.move_line_up,   "<Esc>:m -2 <CR>==i")
 
+        -- Paragraph up and down
+        map("n", "J", "}")
+        map("n", "K", "{")
+
         -- Switch to last buffer
         map("n", "<Backspace>", "<C-^>")
 
@@ -73,6 +77,7 @@ M.misc = function()
         -- map("n", maps.new_tab, ":tabnew <CR>") -- new tabs
         map("n", maps.line_number_toggle, ":set nu! <CR>") -- toggle numbers
         map("n", maps.save_file, ":w <CR>") -- ctrl + s to save file
+        map("i", maps.save_file, "<Esc>:w <CR>a") -- ctrl + s to save file
 
         -- terminal mappings --
         -- open a terminal
@@ -162,9 +167,12 @@ M.dashboard = function()
 end
 
 M.hop = function()
-    map({"n", "o"}, plugin_maps.hop.char_one,   ":HopChar1<CR>", { silent = true })
-    map({"n", "o"}, plugin_maps.hop.char_two,   ":HopChar2<CR>", { silent = true })
-    map({"n", "o"}, plugin_maps.hop.line_start, ":HopLineStart<CR>", { silent = true })
+    map({"n", "o", "v"}, plugin_maps.hop.char_one,   "<CMD>HopChar1<CR>",     { silent = true })
+    map({"n", "o", "v"}, plugin_maps.hop.char_two,   "<CMD>HopPattern<CR>",   { silent = true })
+    map({"n", "o", "v"}, plugin_maps.hop.line_start, "<CMD>HopLineStart<CR>", { silent = true })
+    -- map("v", plugin_maps.hop.char_one,   "<CMD>HopChar1<CR>",      { silent = true })
+    -- map("v", plugin_maps.hop.char_two,   "<CMD>HopChar2<CR>",      { silent = true })
+    -- map("v", plugin_maps.hop.line_start, "<CMD>HopLineStart<CR>",  { silent = true })
 end
 
 M.nvimtree = function()

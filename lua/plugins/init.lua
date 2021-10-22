@@ -308,7 +308,7 @@ return packer.startup(function()
     use {
         "nvim-telescope/telescope.nvim",
         cmd = "Telescope",
-        -- because cheatsheet is not activated by a teleacope command
+        -- because cheatsheet is not activated by a telescope command
         module = "cheatsheet",
         requires = {
             {

@@ -1,3 +1,4 @@
+- feline get rid of icons
 - preview of cppman pages in telescope not working ?
 - line number colored with lsp diagnostics
 - hide diagnostic popup when diagnostic doens't exist anymore

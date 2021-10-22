@@ -104,17 +104,21 @@ local file = {
 --         return icon .. " " .. filename .. " "
 --     end,
 
-    provider = "file_info",
-    colored_icon = false,
-    file_readonly_icon = '',
-    file_modified_icon = '',
+    -- provider = "file_info",
 
+    provider = {
+        name = "file_info",
+        opts = {
+            file_readonly_icon = '',
+            file_modified_icon = '',
+            colored_icon = true,
+        },
+    },
     hl = {
         fg = colors.vibrant_green,
         bg = section_color,
         style = "bold"
     },
-
     right_sep = { str = "│ ", hl = { fg = colors.statusline_bg, bg = section_color } },
 }
 

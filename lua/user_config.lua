@@ -170,9 +170,9 @@ M.mappings.plugin = {
     },
 
     hop = {
-        char_one = "s",
-        char_two = "S",
-        line_start = "", -- <C-Space>
+        char_one = "", -- <C-Space>
+        char_two = "s",
+        line_start = "",
     },
 
     nvimtree = {
@@ -185,7 +185,7 @@ M.mappings.plugin = {
 
     telescope = {
         buffers         = "<leader><",
-        find_files      = "<leader>ff",
+        find_files      = "<leader><leader>",
         grep_buffer     = "<leader>ss",
         file_browser    = "<leader>.",
         git_commits     = "<leader>cm",
@@ -208,7 +208,7 @@ M.mappings.plugin = {
     lsp = { -- TODO: Actually use these in lspconfig.lua
         definition       = "gd",
         declaration      = "gD",
-        documentation    = "K",
+        documentation    = "<C-k>",
         workspace_add    = "<space>wa",
         workspace_remove = "<space>wr",
         workspace_list   = "<space>wl",
