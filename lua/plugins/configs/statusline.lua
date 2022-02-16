@@ -119,7 +119,7 @@ local file = {
         bg = section_color,
         style = "bold"
     },
-    right_sep = { str = "│ ", hl = { fg = colors.statusline_bg, bg = section_color } },
+    right_sep = { str = " │ ", hl = { fg = colors.statusline_bg, bg = section_color } },
 }
 
 local directory = {
@@ -278,7 +278,7 @@ local lsp_connected = {
 local lsp_errors = {
     provider = "diagnostic_errors",
     enabled = function()
-        return lsp.diagnostics_exist "Error"
+        return vim.diagnostic.severity.ERROR
     end,
     hl = { fg = colors.red, bg = section_color },
     icon = "  "
@@ -287,7 +287,7 @@ local lsp_errors = {
 local lsp_warnings = {
     provider = "diagnostic_warnings",
     enabled = function()
-        return lsp.diagnostics_exist "Warning"
+        return vim.diagnostic.severity.WARN
     end,
     hl = { fg = colors.yellow,  bg = section_color, },
     icon = " 𥉉"
@@ -296,7 +296,7 @@ local lsp_warnings = {
 local lsp_hints = {
     provider = "diagnostic_hints",
     enabled = function()
-        return lsp.diagnostics_exist "Hint"
+        return vim.diagnostic.severity.HINT
     end,
     hl = { fg = colors.nord_blue,  bg = section_color, },
     icon = "  "
@@ -305,7 +305,7 @@ local lsp_hints = {
 local lsp_infos = {
     provider = "diagnostic_info",
     enabled = function()
-        return lsp.diagnostics_exist "Information"
+        return vim.diagnostic.severity.INFO
     end,
     hl = { fg = colors.green, bg = section_color, },
     icon = "  "
@@ -407,7 +407,7 @@ end
 require("feline").setup {
     components = components,
 
-    colors = {
+    theme = {
         fg = colors.fg,
         bg = colors.statusline_bg,
     },

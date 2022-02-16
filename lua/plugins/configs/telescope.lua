@@ -21,6 +21,10 @@ telescope.setup {
         selection_strategy = "reset",
         sorting_strategy = "ascending",
         layout_strategy = "horizontal",
+        preview = {
+            timeout = 500,
+            msg_bg_fillchar = "~"
+        },
         layout_config = {
             horizontal = {
                 prompt_position = "top",
@@ -59,13 +63,13 @@ telescope.setup {
             -- the default case_mode is "smart_case"
         },
         media_files = {
-            filetypes = { "png", "webp", "jpg", "jpeg" },
+            filetypes = { "png", "webp", "jpg", "jpeg", "gif" },
             find_cmd = "rg", -- find command (defaults to `fd`)
         },
     },
 }
 
-local extensions = { "themes", "terms", "fzf" }
+local extensions = { "themes", "terms", "fzf", "file_browser" }
 local packer_repos = [["extensions", "telescope-fzf-native.nvim"]]
 
 if vim.fn.executable "ueberzug" == 1 then

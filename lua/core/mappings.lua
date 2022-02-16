@@ -166,13 +166,16 @@ M.dashboard = function()
     map("n", m.session_save, ":SessionSave <CR>")
 end
 
+M.godbolt = function()
+    local m = plugin_maps.godbolt
+    map({"n", "v"}, m.run, "<CMD>Godbolt<CR>")
+end
+
 M.hop = function()
-    map({"n", "o", "v"}, plugin_maps.hop.char_one,   "<CMD>HopChar1<CR>",     { silent = true })
-    map({"n", "o", "v"}, plugin_maps.hop.char_two,   "<CMD>HopPattern<CR>",   { silent = true })
-    map({"n", "o", "v"}, plugin_maps.hop.line_start, "<CMD>HopLineStart<CR>", { silent = true })
-    -- map("v", plugin_maps.hop.char_one,   "<CMD>HopChar1<CR>",      { silent = true })
-    -- map("v", plugin_maps.hop.char_two,   "<CMD>HopChar2<CR>",      { silent = true })
-    -- map("v", plugin_maps.hop.line_start, "<CMD>HopLineStart<CR>",  { silent = true })
+    local m = plugin_maps.hop
+    map({"n", "o", "v"}, m.char_one,   "<CMD>HopChar1<CR>",     { silent = true })
+    map({"n", "o", "v"}, m.pattern,    "<CMD>HopPattern<CR>",   { silent = true })
+    map({"n", "o", "v"}, m.line_start, "<CMD>HopLineStart<CR>", { silent = true })
 end
 
 M.nvimtree = function()

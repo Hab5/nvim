@@ -8,8 +8,11 @@ M.autopairs = function()
         return
     end
 
+    local cmp = require('cmp')
+    cmp.event:on( 'confirm_done', autopairs_completion.on_confirm_done({  map_char = { tex = '' } }))
+
     autopairs.setup()
-    autopairs_completion.setup {
+    cmp.setup {
         enable_check_bracket_line = false, -- don't match if matching char exist
         map_complete = true, -- insert () func completion
         map_cr = true,
@@ -99,6 +102,20 @@ M.hop = function()
     end
 end
 
+M.godbolt = function()
+    local present, godbolt = pcall(require, "godbolt")
+    if present then
+        godbolt.setup({
+            c   = { compiler = "gsnapshot", options = {} },
+            cpp = { compiler = "gsnapshot", options = {} },
+            quickfix = {
+                enable = true,
+                auto_open = true
+            }
+        })
+    end
+end
+
 M.luasnip = function()
     local present, luasnip = pcall(require, "luasnip")
     if not present then
@@ -131,9 +148,9 @@ M.signature = function()
         lspsignature.setup {
             bind = true,
             doc_lines = 2,
-            floating_window = false,
+            floating_window = true,
             fix_pos = true,
-            hint_enable = true,
+            hint_enable = false,
             hint_prefix = "𥉉",
             hint_scheme = "String",
             hi_parameter = "Search",

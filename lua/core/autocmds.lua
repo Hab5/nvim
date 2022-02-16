@@ -7,8 +7,8 @@ vim.cmd [[ autocmd BufEnter,BufWinEnter,FileType,WinEnter * lua require("core.ut
 -- Open a file from its last left off position
 vim.cmd [[ autocmd BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif ]]
 
--- Trim white spaces on save
-vim.cmd [[ autocmd BufWritePre * :%s/\s\+$//e ]]
+-- -- Trim white spaces on save
+-- vim.cmd [[ autocmd BufWritePre * :%s/\s\+$//e ]]
 
 -- Comment with slashes in c/c++
 vim.cmd [[ autocmd BufEnter *.cpp,*.hpp,*.c,*.h :lua vim.api.nvim_buf_set_option(0, "commentstring", "// %s") ]]
@@ -16,3 +16,5 @@ vim.cmd [[ autocmd BufEnter *.cpp,*.hpp,*.c,*.h :lua vim.api.nvim_buf_set_option
 -- Highlight yanked region
 vim.cmd [[ autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup="FloatBorder", timeout=250} ]]
 
+-- Shader filetypes
+vim.cmd [[ autocmd BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl set filetype=glsl ]] 

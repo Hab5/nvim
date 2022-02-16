@@ -42,12 +42,16 @@ cmp.setup {
     },
 
     mapping = {
-        ["<C-n>"] = cmp.mapping.select_next_item(),
-        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-n>"]     = cmp.mapping.select_next_item(),
+        ["<C-d>"]     = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"]     = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(),
-        ["<C-e>"] = cmp.mapping.close(),
-        ["<CR>"] = cmp.mapping.confirm {
+        ["<C-e>"]     = cmp.mapping.close(),
+        ["<Up>"]      = cmp.mapping.close(),
+        ["<Down>"]    = cmp.mapping.close(),
+        ["<Left>"]    = cmp.mapping.close(),
+        ["<Right>"]   = cmp.mapping.close(),
+        ["<CR>"]      = cmp.mapping.confirm {
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
         },
@@ -89,11 +93,13 @@ cmp.setup {
     },
 
     sources = {
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
-        { name = "buffer" },
-        { name = "nvim_lua" },
-        { name = "path" },
+        { name = "nvim_lsp"                },
+        { name = "luasnip"                 },
+        { name = "buffer"                  },
+        { name = "nvim_lua"                },
+        { name = "path"                    },
+        { name = "cmdline"                 },
+        -- { name = "nvim_lsp_signature_help" }
         -- { name = "cmp_tabnine" },
     },
 }

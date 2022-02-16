@@ -64,6 +64,7 @@ M.plugin_status = {
     esc_insertmode    = true, -- escape from insert mode using custom keys
     feline            = true, -- statusline
     gitsigns          = true, -- gitsigns in statusline
+    godbolt           = true, -- compiler explorer, thank god
     hop               = true, -- better motions
     lspkind           = true, -- lsp enhancements
     lspsignature      = true, -- lsp enhancements
@@ -75,7 +76,6 @@ M.plugin_status = {
     vim_fugitive      = false, -- git in nvim
     vim_matchup       = true, -- % magic, match it but improved
 }
-
 
 -- non plugin ui configs, available without any plugins
 M.ui = {
@@ -169,9 +169,13 @@ M.mappings.plugin = {
         session_save = "<leader>s", -- save a session
     },
 
+    godbolt = {
+        run = "<leader>gb",
+    },
+
     hop = {
         char_one = "", -- <C-Space>
-        char_two = "s",
+        pattern = "s", -- <C-Enter>
         line_start = "",
     },
 

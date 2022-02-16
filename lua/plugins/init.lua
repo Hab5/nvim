@@ -11,7 +11,6 @@ return packer.startup(function()
 
     -- this is arranged on the basis of when a plugin starts
 
-    -- this is the nvchad core repo containing utilities for some features like theme swticher, no need to lazy load
     use {
         "Nvchad/extensions",
     }
@@ -123,6 +122,17 @@ return packer.startup(function()
         end,
     }
 
+    use {
+        "p00f/godbolt.nvim",
+        disable = not plugin_status.godbolt,
+        config = function()
+            require("plugins.configs.others").godbolt()
+        end,
+        setup = function()
+            require("core.mappings").godbolt()
+        end
+    }
+
     -- smooth scroll
     use {
         "karb94/neoscroll.nvim",
@@ -138,24 +148,19 @@ return packer.startup(function()
 
     -- lsp stuff
     use {
-        "kabouzeid/nvim-lspinstall",
-        opt = true,
-        setup = function()
-            require("core.utils").packer_lazy_load "nvim-lspinstall"
-            -- reload the current file so lsp actually starts for it
-            vim.defer_fn(function()
-                vim.cmd "silent! e %"
-            end, 0)
+        "neovim/nvim-lspconfig",
+        config = function()
+            require("plugins.configs.lspconfig")
         end,
     }
 
     use {
-        "neovim/nvim-lspconfig",
-        after = "nvim-lspinstall",
+        "williamboman/nvim-lsp-installer",
         config = function()
-            require "plugins.configs.lspconfig"
+            require("plugins.configs.lspinstaller")
         end,
     }
+
 
     use {
         "ray-x/lsp_signature.nvim",
@@ -272,6 +277,13 @@ return packer.startup(function()
     }
 
     use {
+        "anuvyklack/help-vsplit.nvim",
+        config = function()
+            require("help-vsplit").setup()
+        end
+    }
+
+    use {
         "sbdchd/neoformat",
         disable = not plugin_status.neoformat,
         cmd = "Neoformat",
@@ -322,10 +334,8 @@ return packer.startup(function()
                     require("core.mappings").chadsheet()
                 end,
             },
-            {
-                "nvim-telescope/telescope-fzf-native.nvim",
-                run = "make",
-            },
+            { "nvim-telescope/telescope-fzf-native.nvim", run = "make", },
+            { "nvim-telescope/telescope-file-browser.nvim" },
             {
                 "nvim-telescope/telescope-media-files.nvim",
                 disable = not plugin_status.telescope_media,
@@ -373,4 +383,18 @@ return packer.startup(function()
             require("core.mappings").vim_fugitive()
         end,
     }
+
+--     use {
+--         "hoschi/yode-nvim",
+--         config = function()
+--             require("yode-nvim").setup({})
+--         end
+--     }
+
+--     use {
+--         "t-troebst/perfanno.nvim",
+--         config = function()
+--             require("perfanno").setup({})
+--         end
+--     }
 end)
