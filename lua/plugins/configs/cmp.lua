@@ -79,16 +79,18 @@ cmp.setup {
         end,
     },
 
-    documentation = {
-        border = {
-            {"╭", "FloatBorder"},
-            {"─", "FloatBorder"},
-            {"╮", "FloatBorder"},
-            {"│", "FloatBorder"},
-            {"╯", "FloatBorder"},
-            {"─", "FloatBorder"},
-            {"╰", "FloatBorder"},
-            {"│", "FloatBorder"}
+    window = {
+        documentation = {
+            border = {
+                {"╭", "FloatBorder"},
+                {"─", "FloatBorder"},
+                {"╮", "FloatBorder"},
+                {"│", "FloatBorder"},
+                {"╯", "FloatBorder"},
+                {"─", "FloatBorder"},
+                {"╰", "FloatBorder"},
+                {"│", "FloatBorder"}
+            },
         },
     },
 

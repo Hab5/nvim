@@ -17,4 +17,4 @@ vim.cmd [[ autocmd BufEnter *.cpp,*.hpp,*.c,*.h :lua vim.api.nvim_buf_set_option
 vim.cmd [[ autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup="FloatBorder", timeout=250} ]]
 
 -- Shader filetypes
-vim.cmd [[ autocmd BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl set filetype=glsl ]] 
+vim.cmd [[ autocmd BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl set filetype=glsl ]]

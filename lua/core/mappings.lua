@@ -168,7 +168,8 @@ end
 
 M.godbolt = function()
     local m = plugin_maps.godbolt
-    map({"n", "v"}, m.run, "<CMD>Godbolt<CR>")
+    map("n", m.run, ":Godbolt <CR>")
+    map("v", m.run, ":'<,'>:Godbolt <CR>")
 end
 
 M.hop = function()
